@@ -1,7 +1,7 @@
 "use client"; 
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
-import About from "./components/About";
+import AboutSection from "./components/AboutSection";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
 import CarList from "./components/CarList";
@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar />
       <div className="container mt-24 mx-auto px-12 py-4">
         <HeroSection />
-        <About />
+        <AboutSection />
         <Services />
         <CarList />
         <Testimonial/>
