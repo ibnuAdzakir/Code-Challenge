@@ -1,4 +1,3 @@
-// components/CarList.js
 import React from "react";
 import Image from "next/image";
 import car1 from "/public/images/car1.png";

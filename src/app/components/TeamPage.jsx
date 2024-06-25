@@ -1,6 +1,4 @@
-// src/app/components/TeamPage.jsx
-
-"use client"; // Add this line at the top
+"use client";
 
 import React, { useEffect, useState } from "react";
 
