@@ -19,7 +19,7 @@ const About = () => {
           <p className="text-base lg:text-lg">
             Welcome to PT Holiday, your premier destination for car rentals. We
             pride ourselves on offering a diverse fleet of high-quality vehicles
-            to meet all your transportation needs. Whether you're looking for a
+            to meet all your transportation needs. Whether you are looking for a
             luxury sedan for a business trip, an SUV for a family vacation, or a
             compact car for city driving, we have the perfect ride for you.
           </p>
