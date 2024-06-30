@@ -8,118 +8,69 @@ import {
 } from "react-icons/fa";
 
 const FooterLinks = [
-  {
-    title: "Home",
-    link: "/#",
-  },
-  {
-    title: "About",
-    link: "/#about",
-  },
-  {
-    title: "Contact",
-    link: "/#contact",
-  },
-  {
-    title: "Blog",
-    link: "/#blog",
-  },
+  { title: "Home", link: "/#" },
+  { title: "About", link: "/#about" },
+  { title: "Contact", link: "/#contact" },
+  { title: "Blog", link: "/#blog" },
 ];
 
-const Footer = () => {
-  return (
-    <div className="bg-gray-100 dark:bg-dark mt-14 rounded-t-3xl">
-      <section className="container mx-auto">
-        <div className="grid md:grid-cols-3 py-5">
-          <div className="py-8 px-4">
-            <h1 className="sm:text-3xl text-xl font-bold text-left mb-3">
-              Car Rental Service
-            </h1>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Possimus, voluptate.
-            </p>
-            <br />
-            <div className="flex items-center gap-3">
-              <FaLocationArrow />
-              <p>Malang, Jawa Timur</p>
-            </div>
-            <div className="flex items-center gap-3 mt-3">
-              <FaMobileAlt />
-              <p>+91 123456789</p>
-            </div>
-            <div className="flex items-center gap-3 mt-6">
-              <a href="#">
-                <FaInstagram className="text-3xl hover:text-primary duration-300" />
-              </a>
-              <a href="#">
-                <FaFacebook className="text-3xl hover:text-primary duration-300" />
-              </a>
-              <a href="#">
-                <FaLinkedin className="text-3xl hover:text-primary duration-300" />
-              </a>
-            </div>
+const FooterSection = ({ title, links }) => (
+  <div className="py-8 px-4">
+    <h1 className="sm:text-xl text-xl font-bold text-left mb-3">{title}</h1>
+    <ul className="flex flex-col gap-3">
+      {links.map((link, index) => (
+        <li
+          key={index}
+          className="cursor-pointer hover:underline duration-300 text-gray-500 dark:text-gray-200"
+        >
+          <span>&#11162;</span>
+          <span>{link.title}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const Footer = () => (
+  <div className="bg-gray-100 dark:bg-dark mt-14 rounded-t-3xl">
+    <section className="container mx-auto">
+      <div className="grid md:grid-cols-3 py-5">
+        <div className="py-8 px-4">
+          <h1 className="sm:text-3xl text-xl font-bold text-left mb-3">
+            Car Rental Service
+          </h1>
+          <p className="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, voluptate.
+          </p>
+          <br />
+          <div className="flex items-center gap-3">
+            <FaLocationArrow />
+            <p>Malang, Jawa Timur</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10">
-            <div>
-              <div className="py-8 px-4">
-                <h1 className="sm:text-xl text-xl font-bold text-left mb-3">
-                  Important Links
-                </h1>
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:underline duration-300 text-gray-500 dark:text-gray-200"
-                    >
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div>
-              <div className="py-8 px-4">
-                <h1 className="sm:text-xl text-xl font-bold text-left mb-3">
-                  Useful Links
-                </h1>
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:underline duration-300 text-gray-500 dark:text-gray-200"
-                    >
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div>
-              <div className="py-8 px-4">
-                <h1 className="sm:text-xl text-xl font-bold text-left mb-3">
-                  Our Location
-                </h1>
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:underline duration-300 text-gray-500 dark:text-gray-200"
-                    >
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          <div className="flex items-center gap-3 mt-3">
+            <FaMobileAlt />
+            <p>+91 123456789</p>
+          </div>
+          <div className="flex items-center gap-3 mt-6">
+            <a href="#">
+              <FaInstagram className="text-3xl hover:text-primary duration-300" />
+            </a>
+            <a href="#">
+              <FaFacebook className="text-3xl hover:text-primary duration-300" />
+            </a>
+            <a href="#">
+              <FaLinkedin className="text-3xl hover:text-primary duration-300" />
+            </a>
           </div>
         </div>
-      </section>
-    </div>
-  );
-};
+        <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10">
+          <FooterSection title="Important Links" links={FooterLinks} />
+          <FooterSection title="Useful Links" links={FooterLinks} />
+          <FooterSection title="Our Location" links={FooterLinks} />
+        </div>
+      </div>
+    </section>
+  </div>
+);
 
 export default Footer;
