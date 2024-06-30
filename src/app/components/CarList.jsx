@@ -42,13 +42,13 @@ const CarList = () => {
                 key={index}
                 className="space-y-3 border-2 border-gray-300 hover:border-primary p-3 rounded-xl relative group"
               >
-                <div className="w-full h-[120px]">
+                <div className="relative w-full h-[120px]">
                   <Image
                     src={data.image}
                     alt={data.name}
-                    width={data.width}
-                    height={data.height}
-                    className="w-full h-[120px] object-contain sm:translate-x-8 group-hover:sm:translate-x-16 duration-700"
+                    layout="fill"
+                    objectFit="contain"
+                    className="sm:translate-x-8 group-hover:sm:translate-x-16 duration-700"
                   />
                 </div>
                 <div className="space-y-2">

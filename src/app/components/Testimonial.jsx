@@ -57,6 +57,7 @@ const Testimonial = () => {
                     className="rounded-full"
                   />
                 </div>
+                <div className="text-2xl">⭐⭐⭐⭐⭐</div>
                 <div>{documentToReactComponents(testi.description)}</div>
                 <p className="text-center font-semibold">{testi.name}</p>
               </div>
