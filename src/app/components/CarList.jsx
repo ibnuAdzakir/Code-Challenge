@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import car1 from "/public/images/car1.png";
-import car2 from "/public/images/car3.png";
-import car3 from "/public/images/car4.png";
-
-const carList = [
-  {
-    name: "BMW UX",
-    price: 100,
-    image: car1,
-  },
-  {
-    name: "KIA UX",
-    price: 140,
-    image: car2,
-  },
-  {
-    name: "BMW UX",
-    price: 100,
-    image: car3,
-  },
-];
+import client from "../utils/contentfulClient";
 
 const CarList = () => {
+  const [carList, setCarList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await client.getEntries({
+          content_type: 'car'
+        });
+        const items = response.items.map((item) => ({
+          name: item.fields.name,
+          price: item.fields.price,
+          image: `https:${item.fields.image.fields.file.url}`,
+          width: item.fields.image.fields.file.details.image.width,
+          height: item.fields.image.fields.file.details.image.height
+        }));
+        setCarList(items);
+      } catch (error) {
+        console.error('Error fetching data from Contentful:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="pb-24">
       <div className="container mx-auto px-4">
@@ -42,6 +46,8 @@ const CarList = () => {
                   <Image
                     src={data.image}
                     alt={data.name}
+                    width={data.width}
+                    height={data.height}
                     className="w-full h-[120px] object-contain sm:translate-x-8 group-hover:sm:translate-x-16 duration-700"
                   />
                 </div>

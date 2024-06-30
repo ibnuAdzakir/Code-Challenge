@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Image from "next/image"; 
-
-const testimonialData = [
-  {
-    name: "Kaka",
-    image: "/images/orang1.jpg",
-    description: "Very good services",
-  },
-  {
-    name: "Kiki",
-    image: "/images/orang2.jpg",
-    description: "Very comfy car",
-  },
-  {
-    name: "Koko",
-    image: "/images/orang3.png",
-    description: "Affordable price",
-  },
-];
+import Image from "next/image";
+import client from "../utils/contentfulClient";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const Testimonial = () => {
+  const [testimonialData, setTestimonialData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await client.getEntries({
+          content_type: 'testimonial'
+        });
+        const items = response.items.map((item) => ({
+          name: item.fields.name,
+          image: `https:${item.fields.image.fields.file.url}`,
+          description: item.fields.description,
+        }));
+        setTestimonialData(items);
+      } catch (error) {
+        console.error('Error fetching data from Contentful:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -51,8 +57,7 @@ const Testimonial = () => {
                     className="rounded-full"
                   />
                 </div>
-                <div className="text-2xl">⭐⭐⭐⭐⭐</div>
-                <p>{testi.description}</p>
+                <div>{documentToReactComponents(testi.description)}</div>
                 <p className="text-center font-semibold">{testi.name}</p>
               </div>
             ))}
