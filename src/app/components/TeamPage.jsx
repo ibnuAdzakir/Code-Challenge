@@ -27,8 +27,6 @@ const TeamPage = () => {
                 <h2 className="text-xl font-semibold text-center">
                   {member.name.first} {member.name.last}
                 </h2>
-                <p className="text-gray-600 text-center">{member.email}</p>
-                <p className="text-gray-600 text-center">{member.phone}</p>
               </div>
             ))}
           </div>
