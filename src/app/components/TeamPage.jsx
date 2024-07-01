@@ -8,7 +8,7 @@ const TeamPage = () => {
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=10")
       .then((response) => response.json())
-      .then((data) => setTeamMembers(data.results.slice(0, 6))); // Limit to 3 members
+      .then((data) => setTeamMembers(data.results.slice(0, 6)));
   }, []);
 
   return (
